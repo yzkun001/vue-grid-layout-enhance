@@ -1,15 +1,36 @@
-<p align="center"><a href="https://jbaysolutions.github.io/vue-grid-layout/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://jbaysolutions.github.io/vue-grid-layout/assets/img/logo.png" alt="Vue Grid Layout"></a></p>
+<h1>vue-grid-layout-plus</h1>
+
+<p align="center">
+<a href="https://www.npmjs.com/package/vue-grid-layout-enhance"><img src="https://img.shields.io/npm/v/vue-grid-layout-enhance.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout-enhance.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
+</p>
+
+
+- The usage is fully compatible<a href="https://github.com/jbaysolutions/vue-grid-layout">vue-grid-layout</a>
+- Based on vue-grid-layout, this plugin improves the way of using it by directly writing dom
+- Optimized the non-essential parameters of grid-item
+
+***use difference***
+
+```html
+<!-- 直接写dom使用 -->
+<grid-item i="1">1</grid-item>
+<grid-item i="2">2</grid-item>
+<grid-item i="3">3</grid-item>
+...
+
+
+
+<!-- 参数优化 -->
+<!-- vue-grid-layout -->
+<grid-item x="x" y="y" w="w" h="h" i="i">{...content}</grid-item>
+
+<!-- vue-grid-layout-plus -->
+<grid-item i="i">{...content}</grid-item>
+```
 
 <h1 align="center">vue-grid-layout</h1>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-grid-layout">
-    <img src="https://img.shields.io/npm/v/vue-grid-layout.svg"/> 
-    <img src="https://img.shields.io/npm/dm/vue-grid-layout.svg"/>
-</a> 
-<a href="https://github.com/jbaysolutions/vue-grid-layout/releases">
-    <img src="https://img.shields.io/github/size/jbaysolutions/vue-grid-layout/dist/vue-grid-layout.umd.min.js"/>
-</a>
 <!--a href="https://vuejs.org/">
     <img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/>
 </a-->
