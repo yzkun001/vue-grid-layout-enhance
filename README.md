@@ -1,4 +1,4 @@
-<h1>vue-grid-layout-plus</h1>
+<h1 align="center">vue-grid-layout-enhance</h1>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-grid-layout-enhance"><img src="https://img.shields.io/npm/v/vue-grid-layout-enhance.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout-enhance.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
