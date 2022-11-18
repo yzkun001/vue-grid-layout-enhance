@@ -1,100 +1,104 @@
 <template>
-    <div ref="item" class="vue-grid-item" :class="classObj" :style="style">
+    <div ref="item"
+         class="vue-grid-item"
+         :class="classObj"
+         :style="style"
+    >
         <slot></slot>
         <span v-if="resizableAndNotStatic" ref="handle" :class="resizableHandleClass"></span>
         <!--<span v-if="draggable" ref="dragHandle" class="vue-draggable-handle"></span>-->
     </div>
 </template>
 <style>
-.vue-grid-item {
-    transition: all 200ms ease;
-    transition-property: left, top, right;
-    /* add right for rtl */
-}
+    .vue-grid-item {
+        transition: all 200ms ease;
+        transition-property: left, top, right;
+        /* add right for rtl */
+    }
 
-.vue-grid-item.no-touch {
-    -ms-touch-action: none;
-    touch-action: none;
-}
+    .vue-grid-item.no-touch {
+        -ms-touch-action: none;
+        touch-action: none;
+    }
 
-.vue-grid-item.cssTransforms {
-    transition-property: transform;
-    left: 0;
-    right: auto;
-}
+    .vue-grid-item.cssTransforms {
+        transition-property: transform;
+        left: 0;
+        right: auto;
+    }
 
-.vue-grid-item.cssTransforms.render-rtl {
-    left: auto;
-    right: 0;
-}
+    .vue-grid-item.cssTransforms.render-rtl {
+        left: auto;
+        right: 0;
+    }
 
-.vue-grid-item.resizing {
-    opacity: 0.6;
-    z-index: 3;
-}
+    .vue-grid-item.resizing {
+        opacity: 0.6;
+        z-index: 3;
+    }
 
-.vue-grid-item.vue-draggable-dragging {
-    transition: none;
-    z-index: 3;
-}
+    .vue-grid-item.vue-draggable-dragging {
+        transition:none;
+        z-index: 3;
+    }
 
-.vue-grid-item.vue-grid-placeholder {
-    background: red;
-    opacity: 0.2;
-    transition-duration: 100ms;
-    z-index: 2;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
+    .vue-grid-item.vue-grid-placeholder {
+        background: red;
+        opacity: 0.2;
+        transition-duration: 100ms;
+        z-index: 2;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
 
-.vue-grid-item>.vue-resizable-handle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    bottom: 0;
-    right: 0;
-    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');
-    background-position: bottom right;
-    padding: 0 3px 3px 0;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    box-sizing: border-box;
-    cursor: se-resize;
-}
+    .vue-grid-item > .vue-resizable-handle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        bottom: 0;
+        right: 0;
+        background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');
+        background-position: bottom right;
+        padding: 0 3px 3px 0;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        box-sizing: border-box;
+        cursor: se-resize;
+    }
 
-.vue-grid-item>.vue-rtl-resizable-handle {
-    bottom: 0;
-    left: 0;
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAuMDAwMDAwMDAwMDAwMDAyIiBoZWlnaHQ9IjEwLjAwMDAwMDAwMDAwMDAwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSIxMiIgd2lkdGg9IjEyIiB5PSItMSIgeD0iLTEiLz4KICA8ZyBkaXNwbGF5PSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgeT0iMCIgeD0iMCIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgaWQ9ImNhbnZhc0dyaWQiPgogICA8cmVjdCBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIgc3Ryb2tlLXdpZHRoPSIwIiB5PSIwIiB4PSIwIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+CiAgPC9nPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxsaW5lIGNhbnZhcz0iI2ZmZmZmZiIgY2FudmFzLW9wYWNpdHk9IjEiIHN0cm9rZS1saW5lY2FwPSJ1bmRlZmluZWQiIHN0cm9rZS1saW5lam9pbj0idW5kZWZpbmVkIiBpZD0ic3ZnXzEiIHkyPSItNzAuMTc4NDA3IiB4Mj0iMTI0LjQ2NDE3NSIgeTE9Ii0zOC4zOTI3MzciIHgxPSIxNDQuODIxMjg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgc3Ryb2tlPSIjNjY2NjY2IiBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z181IiB5Mj0iOS4xMDY5NTciIHgyPSIwLjk0NzI0NyIgeTE9Ii0wLjAxODEyOCIgeDE9IjAuOTQ3MjQ3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8bGluZSBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z183IiB5Mj0iOSIgeDI9IjEwLjA3MzUyOSIgeTE9IjkiIHgxPSItMC42NTU2NCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM2NjY2NjYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+);
-    background-position: bottom left;
-    padding-left: 3px;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    cursor: sw-resize;
-    right: auto;
-}
+    .vue-grid-item > .vue-rtl-resizable-handle {
+        bottom: 0;
+        left: 0;
+        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAuMDAwMDAwMDAwMDAwMDAyIiBoZWlnaHQ9IjEwLjAwMDAwMDAwMDAwMDAwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSIxMiIgd2lkdGg9IjEyIiB5PSItMSIgeD0iLTEiLz4KICA8ZyBkaXNwbGF5PSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgeT0iMCIgeD0iMCIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgaWQ9ImNhbnZhc0dyaWQiPgogICA8cmVjdCBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIgc3Ryb2tlLXdpZHRoPSIwIiB5PSIwIiB4PSIwIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+CiAgPC9nPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxsaW5lIGNhbnZhcz0iI2ZmZmZmZiIgY2FudmFzLW9wYWNpdHk9IjEiIHN0cm9rZS1saW5lY2FwPSJ1bmRlZmluZWQiIHN0cm9rZS1saW5lam9pbj0idW5kZWZpbmVkIiBpZD0ic3ZnXzEiIHkyPSItNzAuMTc4NDA3IiB4Mj0iMTI0LjQ2NDE3NSIgeTE9Ii0zOC4zOTI3MzciIHgxPSIxNDQuODIxMjg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgc3Ryb2tlPSIjNjY2NjY2IiBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z181IiB5Mj0iOS4xMDY5NTciIHgyPSIwLjk0NzI0NyIgeTE9Ii0wLjAxODEyOCIgeDE9IjAuOTQ3MjQ3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8bGluZSBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z183IiB5Mj0iOSIgeDI9IjEwLjA3MzUyOSIgeTE9IjkiIHgxPSItMC42NTU2NCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM2NjY2NjYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+);
+        background-position: bottom left;
+        padding-left: 3px;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        cursor: sw-resize;
+        right: auto;
+    }
 
-.vue-grid-item.disable-userselect {
-    user-select: none;
-}
+    .vue-grid-item.disable-userselect {
+        user-select: none;
+    }
 </style>
-<script>
-import { setTopLeft, setTopRight, setTransformRtl, setTransform } from '@/helpers/utils';
-import { getControlPosition, createCoreData } from '@/helpers/draggableUtils';
-import { getColsFromBreakpoint } from '@/helpers/responsiveUtils';
-import { getDocumentDir } from "@/helpers/DOM";
-//    var eventBus = require('./eventBus');
+<script>  
+    import {setTopLeft, setTopRight, setTransformRtl, setTransform} from '@/helpers/utils';
+    import {getControlPosition, createCoreData} from '@/helpers/draggableUtils';
+    import {getColsFromBreakpoint} from '@/helpers/responsiveUtils';
+    import {getDocumentDir} from "@/helpers/DOM";
+    //    var eventBus = require('./eventBus');
 
-import '@interactjs/auto-start'
-import '@interactjs/auto-scroll'
-import '@interactjs/actions/drag'
-import '@interactjs/actions/resize'
-import '@interactjs/modifiers'
-import '@interactjs/dev-tools'
-import interact from '@interactjs/interact'
+    import '@interactjs/auto-start'
+    import '@interactjs/auto-scroll'
+    import '@interactjs/actions/drag'
+    import '@interactjs/actions/resize'
+    import '@interactjs/modifiers'
+    import '@interactjs/dev-tools'
+    import interact from '@interactjs/interact'
 
 export default {
     name: "GridItem",
@@ -106,7 +110,6 @@ export default {
         /*containerWidth: {
          type: Number,
          required: true
-
          },
          rowHeight: {
          type: Number,
@@ -165,22 +168,22 @@ export default {
             required: false,
             default: Infinity
         },
-        // x: {
-        //     type: Number,
-        //     required: true
-        // },
-        // y: {
-        //     type: Number,
-        //     required: true
-        // },
-        // w: {
-        //     type: Number,
-        //     required: true
-        // },
-        // h: {
-        //     type: Number,
-        //     required: true
-        // },
+        x: {
+            type: Number,
+            required: true
+        },
+        y: {
+            type: Number,
+            required: true
+        },
+        w: {
+            type: Number,
+            required: true
+        },
+        h: {
+            type: Number,
+            required: true
+        },
         i: {
             required: true
         },
@@ -204,15 +207,15 @@ export default {
             required: false,
             default: false,
         },
-        dragOption: {
-            type: Object,
+        dragOption:{
+            type:Object,
             required: false,
-            default: () => ({}),
+            default: ()=>({}),
         },
-        resizeOption: {
-            type: Object,
+        resizeOption:{
+            type:Object,
             required: false,
-            default: () => ({}),
+            default: ()=>({}),
         }
     },
     inject: ["eventBus", "layout"],
@@ -228,7 +231,6 @@ export default {
             transformScale: 1,
             useCssTransforms: true,
             useStyleCursor: true,
-
             isDragging: false,
             dragging: null,
             isResizing: false,
@@ -239,74 +241,58 @@ export default {
             lastH: NaN,
             style: {},
             rtl: false,
-
             dragEventSet: false,
             resizeEventSet: false,
-
             previousW: null,
             previousH: null,
             previousX: null,
             previousY: null,
-            innerX: 0,
-            innerY: 0,
-            innerW: 0,
-            innerH: 0,
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0
+            innerX: this.x,
+            innerY: this.y,
+            innerW: this.w,
+            innerH: this.h
         }
     },
-    created() {
+    created () {
         let self = this;
         // Accessible refernces of functions for removing in beforeDestroy
         self.updateWidthHandler = function (width) {
             self.updateWidth(width);
         };
-
         self.compactHandler = function (layout) {
             self.compact(layout);
         };
-
         self.setDraggableHandler = function (isDraggable) {
             if (self.isDraggable === null) {
                 self.draggable = isDraggable;
             }
         };
-
         self.setResizableHandler = function (isResizable) {
             if (self.isResizable === null) {
                 self.resizable = isResizable;
             }
         };
-
         self.setBoundedHandler = function (isBounded) {
             if (self.isBounded === null) {
                 self.bounded = isBounded;
             }
         };
-
         self.setTransformScaleHandler = function (transformScale) {
             self.transformScale = transformScale
         };
-
         self.setRowHeightHandler = function (rowHeight) {
             self.rowHeight = rowHeight;
         };
-
         self.setMaxRowsHandler = function (maxRows) {
             self.maxRows = maxRows;
         };
-
         self.directionchangeHandler = () => {
             this.rtl = getDocumentDir() === 'rtl';
             this.compact();
         };
-
         self.setColNum = (colNum) => {
-            self.cols = parseInt(colNum);
+           self.cols = parseInt(colNum);
         }
-
         this.eventBus.$on('updateWidth', self.updateWidthHandler);
         this.eventBus.$on('compact', self.compactHandler);
         this.eventBus.$on('setDraggable', self.setDraggableHandler);
@@ -317,15 +303,9 @@ export default {
         this.eventBus.$on('setMaxRows', self.setMaxRowsHandler);
         this.eventBus.$on('directionchange', self.directionchangeHandler);
         this.eventBus.$on('setColNum', self.setColNum)
-
         this.rtl = getDocumentDir() === 'rtl';
-        this.innerH = this.h;
-        this.innerW = this.w;
-        this.innerX = this.x;
-        this.innerY = this.y;
-        this.createStyle();
     },
-    beforeDestroy: function () {
+    beforeDestroy: function(){
         let self = this;
         //Remove listeners
         this.eventBus.$off('updateWidth', self.updateWidthHandler);
@@ -352,7 +332,6 @@ export default {
         this.containerWidth = this.layout.width !== null ? this.layout.width : 100;
         this.margin = this.layout.margin !== undefined ? this.layout.margin : [10, 10];
         this.maxRows = this.layout.maxRows;
-
         if (this.isDraggable === null) {
             this.draggable = this.layout.isDraggable;
         } else {
@@ -374,30 +353,6 @@ export default {
         this.createStyle();
     },
     watch: {
-        'layoutItem.x': {
-            handler(val) {
-                this.x = val;
-            },
-            immediate: true
-        },
-        'layoutItem.w': {
-            handler(val) {
-                this.w = val;
-            },
-            immediate: true
-        },
-        'layoutItem.h': {
-            handler(val) {
-                this.h = val;
-            },
-            immediate: true
-        },
-        'layoutItem.y': {
-            handler(val) {
-                this.y = val;
-            },
-            immediate: true
-        },
         isDraggable: function () {
             this.draggable = this.isDraggable;
         },
@@ -432,19 +387,25 @@ export default {
             this.emitContainerResized();
         },
         x: function (newVal) {
+            console.log('watch x change i=' + this.i + '; newVal=' + newVal)
             this.innerX = newVal;
             this.createStyle();
         },
         y: function (newVal) {
+            console.log('watch y change i=' + this.i + '; newVal=' + newVal)
+
             this.innerY = newVal;
             this.createStyle();
         },
         h: function (newVal) {
+            console.log('watch h change i=' + this.i + '; newVal=' + newVal)
+
             this.innerH = newVal
             this.createStyle();
             // this.emitContainerResized();
         },
         w: function (newVal) {
+            console.log('watch w change i=' + this.i + '; newVal=' + newVal)
             this.innerW = newVal;
             this.createStyle();
             // this.emitContainerResized();
@@ -476,41 +437,22 @@ export default {
         },
     },
     computed: {
-        layoutItem() {
-            if (this.i === -1) {
-                return this.layout.placeholder;
-            }
-            return this.layout.layout[this.i] || {}
-        },
-        // x () {
-        //     return this.layout.layout[this.i]?.x || 0
-        // },
-        // y () {
-        //     return this.layout.layout[this.i]?.y || 0
-        // },
-        // w () {
-        //     return this.layout.layout[this.i]?.w || 0
-        // },
-        // h () {
-        //     return this.layout.layout[this.i]?.h || 0
-        // },
-
         classObj() {
             return {
-                'vue-resizable': this.resizableAndNotStatic,
+                'vue-resizable' : this.resizableAndNotStatic,
                 'static': this.static,
-                'resizing': this.isResizing,
-                'vue-draggable-dragging': this.isDragging,
-                'cssTransforms': this.useCssTransforms,
-                'render-rtl': this.renderRtl,
+                'resizing' : this.isResizing,
+                'vue-draggable-dragging' : this.isDragging,
+                'cssTransforms' : this.useCssTransforms,
+                'render-rtl' : this.renderRtl,
                 'disable-userselect': this.isDragging,
                 'no-touch': this.isAndroid && this.draggableOrResizableAndNotStatic
             }
         },
-        resizableAndNotStatic() {
+        resizableAndNotStatic(){
             return this.resizable && !this.static;
         },
-        draggableOrResizableAndNotStatic() {
+        draggableOrResizableAndNotStatic(){
             return (this.draggable || this.resizable) && !this.static;
         },
         isAndroid() {
@@ -533,15 +475,13 @@ export default {
                 this.innerX = 0;
                 this.innerW = (this.w > this.cols) ? this.cols : this.w
             } else {
-                this.innerX = this.x;
-                this.innerW = this.w;
+              this.innerX = this.x;
+              this.innerW = this.w;
             }
             let pos = this.calcPosition(this.innerX, this.innerY, this.innerW, this.innerH);
-
-
             if (this.isDragging) {
                 pos.top = this.dragging.top;
-                //                    Add rtl support
+//                    Add rtl support
                 if (this.renderRtl) {
                     pos.right = this.dragging.left;
                 } else {
@@ -552,19 +492,17 @@ export default {
                 pos.width = this.resizing.width;
                 pos.height = this.resizing.height;
             }
-
             let style;
             // CSS Transforms support (default)
             if (this.useCssTransforms) {
-                //                    Add rtl support
+//                    Add rtl support
                 if (this.renderRtl) {
                     style = setTransformRtl(pos.top, pos.right, pos.width, pos.height);
                 } else {
                     style = setTransform(pos.top, pos.left, pos.width, pos.height);
                 }
-
             } else { // top,left (slow)
-                //                    Add rtl support
+//                    Add rtl support
                 if (this.renderRtl) {
                     style = setTopRight(pos.top, pos.right, pos.width, pos.height);
                 } else {
@@ -580,7 +518,7 @@ export default {
             for (let prop of ['width', 'height']) {
                 let val = this.style[prop];
                 let matches = val.match(/^(\d+)px$/);
-                if (!matches)
+                if (! matches)
                     return;
                 styleProps[prop] = matches[1];
             }
@@ -591,9 +529,8 @@ export default {
             const position = getControlPosition(event);
             // Get the current drag point from the event. This is used as the offset.
             if (position == null) return; // not possible but satisfies flow
-            const { x, y } = position;
-
-            const newSize = { width: 0, height: 0 };
+            const {x, y} = position;
+            const newSize = {width: 0, height: 0};
             let pos;
             switch (event.type) {
                 case "resizestart": {
@@ -608,7 +545,7 @@ export default {
                     break;
                 }
                 case "resizemove": {
-                    //                        console.log("### resize => " + event.type + ", lastW=" + this.lastW + ", lastH=" + this.lastH);
+//                        console.log("### resize => " + event.type + ", lastW=" + this.lastW + ", lastH=" + this.lastH);
                     const coreEvent = createCoreData(this.lastW, this.lastH, x, y);
                     if (this.renderRtl) {
                         newSize.width = this.resizing.width - coreEvent.deltaX / this.transformScale;
@@ -616,7 +553,6 @@ export default {
                         newSize.width = this.resizing.width + coreEvent.deltaX / this.transformScale;
                     }
                     newSize.height = this.resizing.height + coreEvent.deltaY / this.transformScale;
-
                     ///console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
                     this.resizing = newSize;
                     break;
@@ -626,13 +562,12 @@ export default {
                     pos = this.calcPosition(this.innerX, this.innerY, this.innerW, this.innerH);
                     newSize.width = pos.width;
                     newSize.height = pos.height;
-                    //                        console.log("### resize end => " + JSON.stringify(newSize));
+//                        console.log("### resize end => " + JSON.stringify(newSize));
                     this.resizing = null;
                     this.isResizing = false;
                     break;
                 }
             }
-
             // Get new WH
             pos = this.calcWH(newSize.height, newSize.width);
             if (pos.w < this.minW) {
@@ -647,17 +582,14 @@ export default {
             if (pos.h > this.maxH) {
                 pos.h = this.maxH;
             }
-
             if (pos.h < 1) {
                 pos.h = 1;
             }
             if (pos.w < 1) {
                 pos.w = 1;
             }
-
             this.lastW = x;
             this.lastH = y;
-
             if (this.innerW !== pos.w || this.innerH !== pos.h) {
                 this.$emit("resize", this.i, pos.h, pos.w, newSize.height, newSize.width);
             }
@@ -669,34 +601,28 @@ export default {
         handleDrag(event) {
             if (this.static) return;
             if (this.isResizing) return;
-
             const position = getControlPosition(event);
-
             // Get the current drag point from the event. This is used as the offset.
             if (position === null) return; // not possible but satisfies flow
-            const { x, y } = position;
-
+            const {x, y} = position;
             // let shouldUpdate = false;
-            let newPosition = { top: 0, left: 0 };
+            let newPosition = {top: 0, left: 0};
             switch (event.type) {
                 case "dragstart": {
                     this.previousX = this.innerX;
                     this.previousY = this.innerY;
-
                     let parentRect = event.target.offsetParent.getBoundingClientRect();
                     let clientRect = event.target.getBoundingClientRect();
-
                     const cLeft = clientRect.left / this.transformScale;
                     const pLeft = parentRect.left / this.transformScale;
                     const cRight = clientRect.right / this.transformScale;
                     const pRight = parentRect.right / this.transformScale;
                     const cTop = clientRect.top / this.transformScale;
                     const pTop = parentRect.top / this.transformScale;
-
                     if (this.renderRtl) {
-                        newPosition.left = (cRight - pRight) * -1;
+                      newPosition.left = (cRight - pRight) * -1;
                     } else {
-                        newPosition.left = cLeft - pLeft;
+                      newPosition.left = cLeft - pLeft;
                     }
                     newPosition.top = cTop - pTop;
                     this.dragging = newPosition;
@@ -707,23 +633,21 @@ export default {
                     if (!this.isDragging) return;
                     let parentRect = event.target.offsetParent.getBoundingClientRect();
                     let clientRect = event.target.getBoundingClientRect();
-
                     const cLeft = clientRect.left / this.transformScale;
                     const pLeft = parentRect.left / this.transformScale;
                     const cRight = clientRect.right / this.transformScale;
                     const pRight = parentRect.right / this.transformScale;
                     const cTop = clientRect.top / this.transformScale;
                     const pTop = parentRect.top / this.transformScale;
-
-                    //                        Add rtl support
+//                        Add rtl support
                     if (this.renderRtl) {
                         newPosition.left = (cRight - pRight) * -1;
                     } else {
                         newPosition.left = cLeft - pLeft;
                     }
                     newPosition.top = cTop - pTop;
-                    //                        console.log("### drag end => " + JSON.stringify(newPosition));
-                    //                        console.log("### DROP: " + JSON.stringify(newPosition));
+//                        console.log("### drag end => " + JSON.stringify(newPosition));
+//                        console.log("### DROP: " + JSON.stringify(newPosition));
                     this.dragging = null;
                     this.isDragging = false;
                     // shouldUpdate = true;
@@ -731,28 +655,27 @@ export default {
                 }
                 case "dragmove": {
                     const coreEvent = createCoreData(this.lastX, this.lastY, x, y);
-                    //                        Add rtl support
+//                        Add rtl support
                     if (this.renderRtl) {
                         newPosition.left = this.dragging.left - coreEvent.deltaX / this.transformScale;
                     } else {
                         newPosition.left = this.dragging.left + coreEvent.deltaX / this.transformScale;
                     }
                     newPosition.top = this.dragging.top + coreEvent.deltaY / this.transformScale;
-                    if (this.bounded) {
+                    if(this.bounded){
                         const bottomBoundary = event.target.offsetParent.clientHeight - this.calcGridItemWHPx(this.h, this.rowHeight, this.margin[1]);
                         newPosition.top = this.clamp(newPosition.top, 0, bottomBoundary);
                         const colWidth = this.calcColWidth();
                         const rightBoundary = this.containerWidth - this.calcGridItemWHPx(this.w, colWidth, this.margin[0]);
                         newPosition.left = this.clamp(newPosition.left, 0, rightBoundary);
                     }
-                    //                        console.log("### drag => " + event.type + ", x=" + x + ", y=" + y);
-                    //                        console.log("### drag => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
-                    //                        console.log("### drag end => " + JSON.stringify(newPosition));
+//                        console.log("### drag => " + event.type + ", x=" + x + ", y=" + y);
+//                        console.log("### drag => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
+//                        console.log("### drag end => " + JSON.stringify(newPosition));
                     this.dragging = newPosition;
                     break;
                 }
             }
-
             // Get new XY
             let pos;
             if (this.renderRtl) {
@@ -760,10 +683,8 @@ export default {
             } else {
                 pos = this.calcXY(newPosition.top, newPosition.left);
             }
-
             this.lastX = x;
             this.lastY = y;
-
             if (this.innerX !== pos.x || this.innerY !== pos.y) {
                 this.$emit("move", this.i, pos.x, pos.y);
             }
@@ -797,8 +718,6 @@ export default {
                     height: h === Infinity ? h : Math.round(this.rowHeight * h + Math.max(0, h - 1) * this.margin[1])
                 };
             }
-
-
             return out;
         },
         /**
@@ -810,7 +729,6 @@ export default {
         // TODO check if this function needs change in order to support rtl.
         calcXY(top, left) {
             const colWidth = this.calcColWidth();
-
             // left = colWidth * x + margin * (x + 1)
             // l = cx + m(x+1)
             // l = cx + mx + m
@@ -820,36 +738,32 @@ export default {
             // x = (left - margin) / (coldWidth + margin)
             let x = Math.round((left - this.margin[0]) / (colWidth + this.margin[0]));
             let y = Math.round((top - this.margin[1]) / (this.rowHeight + this.margin[1]));
-
             // Capping
             x = Math.max(Math.min(x, this.cols - this.innerW), 0);
             y = Math.max(Math.min(y, this.maxRows - this.innerH), 0);
-
-            return { x, y };
+            return {x, y};
         },
         // Helper for generating column width
         calcColWidth() {
             const colWidth = (this.containerWidth - (this.margin[0] * (this.cols + 1))) / this.cols;
-            // console.log("### COLS=" + this.cols + " COL WIDTH=" + colWidth + " MARGIN " + this.margin[0]);
+           // console.log("### COLS=" + this.cols + " COL WIDTH=" + colWidth + " MARGIN " + this.margin[0]);
             return colWidth;
         },
         // This can either be called:
         // calcGridItemWHPx(w, colWidth, margin[0])
         // or
         // calcGridItemWHPx(h, rowHeight, margin[1])
-        calcGridItemWHPx(gridUnits, colOrRowSize, marginPx) {
+        calcGridItemWHPx(gridUnits,colOrRowSize,marginPx) {
             // 0 * Infinity === NaN, which causes problems with resize contraints
             if (!Number.isFinite(gridUnits)) return gridUnits;
             return Math.round(
                 colOrRowSize * gridUnits + Math.max(0, gridUnits - 1) * marginPx
             );
         },
-
         // Similar to _.clamp
         clamp(num, lowerBound, upperBound) {
             return Math.max(Math.min(num, upperBound), lowerBound);
         },
-
         /**
          * Given a height and width in pixel values, calculate grid units.
          * @param  {Number} height Height in pixels.
@@ -859,7 +773,6 @@ export default {
          */
         calcWH(height, width, autoSizeFlag = false) {
             const colWidth = this.calcColWidth();
-
             // width = colWidth * w - (margin * (w - 1))
             // ...
             // w = (width + margin) / (colWidth + margin)
@@ -870,11 +783,10 @@ export default {
             } else {
                 h = Math.ceil((height + this.margin[1]) / (this.rowHeight + this.margin[1]));
             }
-
             // Capping
             w = Math.max(Math.min(w, this.cols - this.innerX), 0);
             h = Math.max(Math.min(h, this.maxRows - this.innerY), 0);
-            return { w, h };
+            return {w, h};
         },
         updateWidth: function (width, colNum) {
             this.containerWidth = width;
@@ -885,7 +797,7 @@ export default {
         compact: function () {
             this.createStyle();
         },
-        tryMakeDraggable: function () {
+        tryMakeDraggable: function(){
             const self = this;
             if (this.interactObj === null || this.interactObj === undefined) {
                 this.interactObj = interact(this.$refs.item);
@@ -913,7 +825,7 @@ export default {
                 });
             }
         },
-        tryMakeResizable: function () {
+        tryMakeResizable: function(){
             const self = this;
             if (this.interactObj === null || this.interactObj === undefined) {
                 this.interactObj = interact(this.$refs.item);
@@ -922,12 +834,10 @@ export default {
                 }
             }
             if (this.resizable && !this.static) {
-                let maximum = this.calcPosition(0, 0, this.maxW, this.maxH);
-                let minimum = this.calcPosition(0, 0, this.minW, this.minH);
-
+                let maximum = this.calcPosition(0,0, this.maxW, this.maxH);
+                let minimum = this.calcPosition(0,0, this.minW, this.minH);
                 // console.log("### MAX " + JSON.stringify(maximum));
                 // console.log("### MIN " + JSON.stringify(minimum));
-
                 const opts = {
                     // allowFrom: "." + this.resizableHandleClass.trim().replace(" ", "."),
                     edges: {
@@ -949,7 +859,6 @@ export default {
                     },
                     ...this.resizeOption,
                 };
-
                 if (this.preserveAspectRatio) {
                     opts.modifiers = [
                         interact.modifiers.aspectRatio({
@@ -957,7 +866,6 @@ export default {
                         }),
                     ]
                 }
-
                 this.interactObj.resizable(opts);
                 if (!this.resizeEventSet) {
                     this.resizeEventSet = true;
@@ -972,12 +880,11 @@ export default {
                 });
             }
         },
-        autoSize: function () {
+        autoSize: function() {
             // ok here we want to calculate if a resize is needed
             this.previousW = this.innerW;
             this.previousH = this.innerH;
-
-            let newSize = this.$slots.default[0].elm.getBoundingClientRect();
+            let newSize=this.$slots.default[0].elm.getBoundingClientRect();
             let pos = this.calcWH(newSize.height, newSize.width, true);
             if (pos.w < this.minW) {
                 pos.w = this.minW;
@@ -991,17 +898,14 @@ export default {
             if (pos.h > this.maxH) {
                 pos.h = this.maxH;
             }
-
             if (pos.h < 1) {
                 pos.h = 1;
             }
             if (pos.w < 1) {
                 pos.w = 1;
             }
-
             // this.lastW = x; // basically, this is copied from resizehandler, but shouldn't be needed
             // this.lastH = y;
-
             if (this.innerW !== pos.w || this.innerH !== pos.h) {
                 this.$emit("resize", this.i, pos.h, pos.w, newSize.height, newSize.width);
             }

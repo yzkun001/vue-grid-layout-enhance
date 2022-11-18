@@ -1,8 +1,34 @@
-<h1 align="center">vue-grid-layout</h1>
+<h1>vue-grid-layout-plus</h1>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-grid-layout"><img src="https://img.shields.io/npm/v/vue-grid-layout.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
+<a href="https://www.npmjs.com/package/vue-grid-layout-enhance"><img src="https://img.shields.io/npm/v/vue-grid-layout-enhance.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout-enhance.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
 </p>
+
+
+- 使用方式完全兼容<a href="https://github.com/jbaysolutions/vue-grid-layout">vue-grid-layout</a>
+- 本插件在vue-grid-layout的基础上完善了可以通过直接写dom的使用方式
+- 优化了grid-item的非必须参数
+
+***使用差异***
+
+```html
+<!-- 直接写dom使用 -->
+<grid-item i="1">1</grid-item>
+<grid-item i="2">2</grid-item>
+<grid-item i="3">3</grid-item>
+...
+
+
+
+<!-- 参数优化 -->
+<!-- vue-grid-layout -->
+<grid-item x="x" y="y" w="w" h="h" i="i">{...content}</grid-item>
+
+<!-- vue-grid-layout-plus -->
+<grid-item i="i">{...content}</grid-item>
+```
+
+<h1 align="center">vue-grid-layout</h1>
 
 vue-grid-layout是一个类似于[Gridster](http://dsmorse.github.io/gridster.js/)的栅格布局系统, 适用于Vue.js。 **灵感源自于 [React-Grid-Layout](https://github.com/STRML/react-grid-layout)**
 

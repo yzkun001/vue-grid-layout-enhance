@@ -1,7 +1,7 @@
 {
-  "name": "vue-grid-layout",
-  "version": "2.4.0",
-  "description": "A draggable and resizable grid layout, as a Vue component.",
+  "name": "vue-grid-layout-enhance",
+  "version": "1.0.0",
+  "description": "vue-grid-layout enhance",
   "keywords": [
     "grid",
     "vuejs",
@@ -14,12 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbaysolutions/vue-grid-layout.git"
+    "url": "https://github.com/yzkun001/vue-grid-layout-enhance.git"
   },
-  "author": "Gustavo Santos (JBay Solutions) <gustavo.santos@jbaysolutions.com> (http://www.jbaysolutions.com)",
-  "homepage": "https://github.com/jbaysolutions/vue-grid-layout",
-  "main": "dist/vue-grid-layout.common.js",
-  "unpkg": "dist/vue-grid-layout.umd.min.js",
+  "author": "Allen <1044740162@qq.com>; Gustavo Santos (JBay Solutions) <gustavo.santos@jbaysolutions.com> (http://www.jbaysolutions.com)",
+  "homepage": "https://github.com/yzkun001/vue-grid-layout-enhance",
+  "main": "dist/vue-grid-layout-enhance.common.js",
+  "unpkg": "dist/vue-grid-layout-enhance.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rimraf dist && vue-cli-service build",
