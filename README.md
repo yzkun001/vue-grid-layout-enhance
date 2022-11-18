@@ -24,7 +24,7 @@
 <!-- vue-grid-layout -->
 <grid-item x="x" y="y" w="w" h="h" i="i">{...content}</grid-item>
 
-<!-- vue-grid-layout-plus -->
+<!-- vue-grid-layout-enhance -->
 <grid-item i="i">{...content}</grid-item>
 ```
 

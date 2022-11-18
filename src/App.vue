@@ -64,7 +64,7 @@
                     @layout-updated="layoutUpdatedEvent"
                     @breakpoint-changed="breakpointChangedEvent"
             >
-                <!-- <grid-item v-for="item in layout" :key="item.i"
+                <grid-item v-for="item in layout" :key="item.i"
                            :static="item.static"
                            :x="item.x"
                            :y="item.y"
@@ -83,12 +83,13 @@
                            @resized="resized"
                            @container-resized="containerResized"
                            @moved="moved"
-                >{{item.i}} -->
+                >
+                <!-- <Kline></Kline> -->
                     <!-- <custom-drag-element :text="item.i"></custom-drag-element> -->
                     <!-- <test-element :text="item.i" @removeItem="removeItem($event)"></test-element> -->
                     <!--<button @click="clicked">CLICK ME!</button>-->
-                <!-- </grid-item> -->
-                <grid-item i="0">测试测试</grid-item>
+                </grid-item>
+                <!-- <grid-item i="0">测试测试</grid-item>
                 <grid-item i="1">测试测试</grid-item>
                 <grid-item i="2">测试测试</grid-item>
                 <grid-item i="3">测试测试</grid-item>
@@ -97,7 +98,7 @@
                 <grid-item i="6">测试测试</grid-item>
                 <grid-item i="7">测试测试</grid-item>
                 <grid-item i="8">测试测试</grid-item>
-                <grid-item i="9">测试测试</grid-item>
+                <grid-item i="9">测试测试</grid-item> -->
 
                 <!-- <grid-item i="4">测试测试</grid-item>
                 <grid-item i="5">测试测试</grid-item>
